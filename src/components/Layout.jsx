@@ -1,16 +1,14 @@
-import React from 'react';
-import Sidebar from './Sidebar';
-import Topbar from './Topbar';
+import React from "react";
+import Sidebar from "./Sidebar";
+import Topbar from "./Topbar";
 
 export default function Layout({ children }) {
   return (
     <div className="sp-layout">
-        <Topbar />
+      <Topbar />
       <div className="sp-main">
-      <Sidebar />
-        <div className="sp-content">
-          {children}
-        </div>
+        <Sidebar />
+        <div className="sp-content">{children}</div>
       </div>
     </div>
   );

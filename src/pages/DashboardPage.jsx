@@ -116,7 +116,7 @@ export default function DashboardPage() {
             notifications
           </p>
         </div>
-        <div className="sp-dash-actions d-flex align-items-center gap-2">
+        <div className="sp-dash-actions d-flex align-items-center gap-2 d-none d-md-flex">
           <div className="sp-search-box">
             <span className="sp-search-icon">
               <svg
@@ -154,7 +154,11 @@ export default function DashboardPage() {
               <button className="sp-promo-btn">Upgrade Now</button>
             </div>
             <div className="sp-promo-img">
-              <img src={Shoes} alt="Shoes" className="object-fit-cover shadow shadow-img" />
+              <img
+                src={Shoes}
+                alt="Shoes"
+                className="object-fit-cover shadow shadow-img"
+              />
             </div>
           </div>
         </div>
@@ -376,7 +380,7 @@ export default function DashboardPage() {
               <div className="d-flex align-items-center justify-content-between mb-3">
                 <div>
                   <h2 className="sp-count">
-                    <span className="fw-medium fs-6">3280</span> 
+                    <span className="fw-medium fs-6">3280</span>
                     <span className="sp-count-txt">{" items "}</span>
                     <span className="ms-3 positive p-1 bg-success-subtle rounded-2">
                       ▲+14.55%
@@ -406,84 +410,92 @@ export default function DashboardPage() {
                   </button>
                 </div>
               </div>
-              <table className="sp-table sp-card-header">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>Product Name</th>
-                    <th>Revenue</th>
-                    <th>Sales</th>
-                    <th>Reviews</th>
-                    <th>Views</th>
-                    <th>Active</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((p) => (
-                    <tr key={p.id}>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
-                      <td>
-                        <div className="d-flex align-items-center gap-2">
-                          <img
-                            src={p.image}
-                            alt=""
-                            className="sp-product-img"
-                          />
-                          <div>
-                            <div className="sp-product-name">{p.name}</div>
-                            <div className="sp-product-status">{p.status}</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td>{p.revenue}</td>
-                      <td>{p.sales.toLocaleString()}</td>
-                      <td>{p.reviews.toLocaleString()}</td>
-                      <td>{p.views.toLocaleString()}</td>
-                      <td>
-                        <div className={`sp-toggle ${p.active ? "on" : ""}`}>
-                          <div className="sp-toggle-dot"></div>
-                        </div>
-                      </td>
+              <div className="sp-table-responsive">
+                <table className="sp-table sp-card-header">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Product Name</th>
+                      <th>Revenue</th>
+                      <th>Sales</th>
+                      <th>Reviews</th>
+                      <th>Views</th>
+                      <th>Active</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {products.map((p) => (
+                      <tr key={p.id}>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <div className="d-flex align-items-center gap-2">
+                            <img
+                              src={p.image}
+                              alt=""
+                              className="sp-product-img"
+                            />
+                            <div>
+                              <div className="sp-product-name">{p.name}</div>
+                              <div className="sp-product-status">
+                                {p.status}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>{p.revenue}</td>
+                        <td>{p.sales.toLocaleString()}</td>
+                        <td>{p.reviews.toLocaleString()}</td>
+                        <td>{p.views.toLocaleString()}</td>
+                        <td>
+                          <div className={`sp-toggle ${p.active ? "on" : ""}`}>
+                            <div className="sp-toggle-dot"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
+          
         </div>
         <div className="col-lg-3 ">
-          <div className="sp-card sp-card-header h-100">
-            <div className="sp-chart-header mb-3">
-              <span className="sp-chart-title">Conversion Rate</span>
-              <span className="sp-chart-period">Last Year ⓘ</span>
-            </div>
-            {[
-              { label: "Product Views", val: 6575, pct: "25%" },
-              { label: "Add to Cart", val: 6575, pct: "25%" },
-              { label: "Checkout Initiated", val: 6575, pct: "25%" },
-              { label: "Completed Purchases", val: 6575, pct: "25%" },
-              { label: "Completed Purchases", val: 6575, pct: "25%" },
-              { label: "Completed Purchases", val: 6575, pct: "25%" },
-              { label: "Completed Purchases", val: 6575, pct: "25%" },
-              { label: "Completed Purchases", val: 6575, pct: "25%" },
-            ].map((item, i) => (
-              <div key={i} className="sp-conversion-row">
-                <div className="d-flex justify-content-between">
-                  <span className="sp-conv-label">{item.label}</span>
-                  <span className="sp-conv-val">
-                    {item.val.toLocaleString()}
-                  </span>
-                </div>
-                <div className="sp-conv-pct">{item.pct}</div>
+            <div className="sp-card sp-card-header h-100">
+              <div className="sp-chart-header mb-3">
+                <span className="sp-chart-title">Conversion Rate</span>
+                <span className="sp-chart-period">Last Year ⓘ</span>
               </div>
-            ))}
-            <a href="#more" className="sp-store-link d-block text-center mt-2">
-              Learn More →
-            </a>
+              {[
+                { label: "Product Views", val: 6575, pct: "25%" },
+                { label: "Add to Cart", val: 6575, pct: "25%" },
+                { label: "Checkout Initiated", val: 6575, pct: "25%" },
+                { label: "Completed Purchases", val: 6575, pct: "25%" },
+                { label: "Completed Purchases", val: 6575, pct: "25%" },
+                { label: "Completed Purchases", val: 6575, pct: "25%" },
+                { label: "Completed Purchases", val: 6575, pct: "25%" },
+                { label: "Completed Purchases", val: 6575, pct: "25%" },
+              ].map((item, i) => (
+                <div key={i} className="sp-conversion-row">
+                  <div className="d-flex justify-content-between">
+                    <span className="sp-conv-label">{item.label}</span>
+                    <span className="sp-conv-val">
+                      {item.val.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="sp-conv-pct">{item.pct}</div>
+                </div>
+              ))}
+              <a
+                href="#more"
+                className="sp-store-link d-block text-center mt-2"
+              >
+                Learn More →
+              </a>
+            </div>
           </div>
-        </div>
       </div>
     </div>
   );

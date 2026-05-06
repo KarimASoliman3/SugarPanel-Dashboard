@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { api } from '../services/api';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { api } from "../services/api";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const limit = 10;
 
@@ -36,13 +36,30 @@ export default function ProductsPage() {
           <div className="d-flex gap-2 align-items-center">
             <div className="sp-search-box">
               <span className="sp-search-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#000000"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-search-icon lucide-search"
+                >
+                  <path d="m21 21-4.34-4.34" />
+                  <circle cx="11" cy="11" r="8" />
+                </svg>
               </span>
               <input
                 type="text"
                 placeholder="Search products..."
                 value={search}
-                onChange={e => { setSearch(e.target.value); setPage(1); }}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setPage(1);
+                }}
               />
             </div>
             <button className="sp-icon-btn">↻</button>
@@ -50,64 +67,98 @@ export default function ProductsPage() {
         </div>
 
         {loading ? (
-          <div className="sp-page-loading"><div className="sp-spinner"></div></div>
+          <div className="sp-page-loading">
+            <div className="sp-spinner"></div>
+          </div>
         ) : (
           <>
-            <table className="sp-table">
-              <thead>
-                <tr>
-                  <th><input type="checkbox" /></th>
-                  <th>Product Name</th>
-                  <th>Revenue</th>
-                  <th>Sales</th>
-                  <th>Reviews</th>
-                  <th>Views</th>
-                  <th>Active</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.map(p => (
-                  <tr key={p.id}>
-                    <td><input type="checkbox" /></td>
-                    <td>
-                      <div className="d-flex align-items-center gap-2">
-                        <img src={p.image} alt="" className="sp-product-img" />
-                        <div>
-                          <div className="sp-product-name">{p.name}</div>
-                          <div className="sp-product-status">{p.status}</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>{p.revenue}</td>
-                    <td>{p.sales.toLocaleString()}</td>
-                    <td>{p.reviews.toLocaleString()}</td>
-                    <td>{p.views.toLocaleString()}</td>
-                    <td>
-                      <div className={`sp-toggle ${p.active ? 'on' : ''}`}>
-                        <div className="sp-toggle-dot"></div>
-                      </div>
-                    </td>
-                    <td>
-                      <Link to={`/products/${p.id}`} className="sp-view-btn">View</Link>
-                    </td>
+            <div className="sp-table-responsive">
+              <table className="sp-table">
+                <thead>
+                  <tr>
+                    <th>
+                      <input type="checkbox" />
+                    </th>
+                    <th>Product Name</th>
+                    <th>Revenue</th>
+                    <th>Sales</th>
+                    <th>Reviews</th>
+                    <th>Views</th>
+                    <th>Active</th>
+                    <th></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {products.map((p) => (
+                    <tr key={p.id}>
+                      <td>
+                        <input type="checkbox" />
+                      </td>
+                      <td>
+                        <div className="d-flex align-items-center gap-2">
+                          <img
+                            src={p.image}
+                            alt=""
+                            className="sp-product-img"
+                          />
+                          <div>
+                            <div className="sp-product-name">{p.name}</div>
+                            <div className="sp-product-status">{p.status}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{p.revenue}</td>
+                      <td>{p.sales.toLocaleString()}</td>
+                      <td>{p.reviews.toLocaleString()}</td>
+                      <td>{p.views.toLocaleString()}</td>
+                      <td>
+                        <div className={`sp-toggle ${p.active ? "on" : ""}`}>
+                          <div className="sp-toggle-dot"></div>
+                        </div>
+                      </td>
+                      <td>
+                        <Link to={`/products/${p.id}`} className="sp-view-btn">
+                          View
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
             {/* Pagination */}
             <div className="sp-pagination d-flex align-items-center justify-content-between mt-3">
-              <span className="sp-page-info">Page {page} of {totalPages}</span>
+              <span className="sp-page-info">
+                Page {page} of {totalPages}
+              </span>
               <div className="sp-page-btns d-flex gap-1">
-                <button className="sp-page-btn" onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>‹</button>
+                <button
+                  className="sp-page-btn"
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                >
+                  ‹
+                </button>
                 {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
                   const p = Math.max(1, Math.min(page - 2, totalPages - 4)) + i;
                   return (
-                    <button key={p} className={`sp-page-btn ${p === page ? 'active' : ''}`} onClick={() => setPage(p)}>{p}</button>
+                    <button
+                      key={p}
+                      className={`sp-page-btn ${p === page ? "active" : ""}`}
+                      onClick={() => setPage(p)}
+                    >
+                      {p}
+                    </button>
                   );
                 })}
-                <button className="sp-page-btn" onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}>›</button>
+                <button
+                  className="sp-page-btn"
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                >
+                  ›
+                </button>
               </div>
             </div>
           </>
