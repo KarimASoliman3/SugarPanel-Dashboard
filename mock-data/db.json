@@ -1,0 +1,14 @@
+{
+  "products": [
+    { "id": 1, "name": "Liam Anderson Red", "revenue": "$1240.32", "sales": 1909, "reviews": 2592, "views": 3333, "status": "In Stock", "active": true },
+    { "id": 2, "name": "Ava Reynolds Blue", "revenue": "$1240.32", "sales": 1909, "reviews": 2592, "views": 3333, "status": "In Stock", "active": true },
+    { "id": 3, "name": "Jackson White Blue", "revenue": "$1240.32", "sales": 1909, "reviews": 2592, "views": 3333, "status": "In Stock", "active": true },
+    { "id": 4, "name": "Bennett Reynolds Blue", "revenue": "$1240.32", "sales": 1909, "reviews": 2592, "views": 3333, "status": "In Stock", "active": true },
+    { "id": 5, "name": "Rue Reynolds Blue", "revenue": "$1240.32", "sales": 1909, "reviews": 2592, "views": 3333, "status": "In Stock", "active": true }
+  ],
+  "users": [
+    { "id": 1, "name": "Ameerah Howard", "email": "admin@sugarpanel.com", "role": "Admin", "store": "New York", "status": "Active" },
+    { "id": 2, "name": "Arthur Bell", "email": "arthur@sugarpanel.com", "role": "Manager", "store": "Los Angeles", "status": "Active" },
+    { "id": 3, "name": "Leslie Perez", "email": "leslie@sugarpanel.com", "role": "Seller", "store": "Chicago", "status": "Active" }
+  ]
+}

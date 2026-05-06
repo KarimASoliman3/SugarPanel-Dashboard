@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  # ─── React Frontend ──────────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sugarpanel-frontend
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API_URL=http://mock-api:3001
+    depends_on:
+      - mock-api
+    networks:
+      - sugarpanel-net
+    restart: unless-stopped
+
+  # ─── Mock JSON Server (REST API) ─────────────────────────────────────────────
+  mock-api:
+    image: clue/json-server
+    container_name: sugarpanel-api
+    ports:
+      - "3001:80"
+    volumes:
+      - ./mock-data/db.json:/data/db.json
+    command: ["--routes", "/data/db.json", "--port", "80"]
+    networks:
+      - sugarpanel-net
+    restart: unless-stopped
+
+networks:
+  sugarpanel-net:
+    driver: bridge
