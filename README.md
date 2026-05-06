@@ -6,7 +6,7 @@ A responsive React dashboard application matching the Sugarpanel Figma design, f
 
 ## 🚀 Live Demo
 
-> Deploy to Vercel/Netlify and add your URL here.
+> [sugar-panel-dashboard](https://sugar-panel-dashboard.vercel.app).
 
 ---
 
@@ -26,7 +26,7 @@ A responsive React dashboard application matching the Sugarpanel Figma design, f
 ```
 sugarpanel/
 ├── src/
-│   ├── components/        # Reusable UI components
+│   ├── components/      # Reusable UI components
 │   │   ├── Layout.jsx      # App shell wrapper
 │   │   ├── Sidebar.jsx     # Left navigation
 │   │   ├── Topbar.jsx      # Top navigation bar
@@ -66,7 +66,7 @@ sugarpanel/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-username/sugarpanel.git
+git clone (https://github.com/KarimASoliman3/SugarPanel.git)
 cd sugarpanel
 
 # 2. Install dependencies
